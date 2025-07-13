@@ -13,6 +13,10 @@ def add_todo( ):
 
 st.text_input("enter a new to-do:- ", placeholder="write your task", on_change= add_todo, key='new_todo')
 
-for todo in todos:
-    st.checkbox(todo)
-
+for index, to_do in enumerate(todos):
+    checkbox= st.checkbox(to_do, key= f"todo_{index}")
+    if checkbox:
+        todos.pop(index)
+        functions.write_todo(todos)
+        del st.session_state[f"todo_{index}"]
+        st.rerun()
