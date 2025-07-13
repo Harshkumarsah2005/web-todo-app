@@ -11,7 +11,8 @@ def add_todo( ):
     todos.append(to_do)
     functions.write_todo(todos)
 
+st.text_input("enter a new to-do:- ", placeholder="write your task", on_change= add_todo, key='new_todo')
+
 for todo in todos:
     st.checkbox(todo)
 
-st.text_input("enter a new to-do:- ", placeholder="write your task", on_change= add_todo, key='new_todo')
